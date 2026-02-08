@@ -24,16 +24,16 @@ def generate_employee_data(n):
             "employee_id": f"E{i+1000}",
             "first_name": fake.first_name(),
             "last_name": fake.last_name(),
-            "email": fake.email(),                      # PII
-            "phone_number": fake.phone_number(),        # PII
+            "email": fake.email(),                      
+            "phone_number": fake.phone_number(),       
             "date_of_birth": fake.date_of_birth(minimum_age=22, maximum_age=60),
-            "address": fake.address().replace("\n", ", "),  # PII
+            "address": fake.address().replace("\n", ", "),  
             "job_title": fake.job(),
             "department": random.choice(
                 ["IT", "HR", "Finance", "Sales", "Operations"]
             ),
-            "salary": random.randint(30000, 90000),     # Sensitive
-            "password_hash": hash_password(raw_password),  # 🔐 Hashed password
+            "salary": random.randint(30000, 90000),    
+            "password_hash": hash_password(raw_password),  
             "hire_date": fake.date_between(start_date="-10y", end_date="today"),
             "country": fake.country()
                     }
@@ -51,14 +51,14 @@ def upload_to_gcs(bucket_name, local_file, gcs_path):
 
 
 if __name__ == "__main__":
-    df = generate_employee_data(NUM_EMPLOYEES) # 1️⃣ Génération des données
-    # 2️⃣ Sauvegarde locale 
+    df = generate_employee_data(NUM_EMPLOYEES) 
+   
     df.to_csv("employee_data.csv",index=False)
     print("Fichier csv creer localement : ")
     print(df.head())
 
 
-    # 3️⃣ Upload vers GCS
+   
     upload_to_gcs(
         bucket_name = "bkt-employee-dat4",
         local_file = "employee_data.csv",
