@@ -76,7 +76,7 @@ Once it’s in BigQuery, it’s super easy to connect Looker (or Looker Studio) 
 - **Cloud Dataproc** (behind Data Fusion): execution engine for the pipeline
 - **BigQuery**: final warehouse
 - **Cloud Composer (Airflow)**: orchestration (optional but recommended)
-- **Looker / Looker Studio**: visualization
+- **Looker / Looker Studio**: visualization (working on it)
 
 ### Setup (high level)
 1. Created a **GCS bucket** (example: `gs://<your-bucket>/raw/employee_data.csv`)
